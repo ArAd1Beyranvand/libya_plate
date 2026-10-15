@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:plate_core/plate_core.dart';
 
 import 'libya_alphabets.dart';
@@ -64,11 +66,21 @@ abstract final class _Layout {
   static const double twoYellowPitch = 26.05;
 }
 
-/// A run of digit cells centred on [centre].
+/// A field of [min]..[max] digits centred on [centre]; the digits centre in a
+/// box sized for the longest run.
 class _Reg {
-  const _Reg(this.key, this.centre, this.cy, this.pitch, this.height);
+  const _Reg(
+    this.key,
+    this.centre,
+    this.cy,
+    this.pitch,
+    this.height,
+    this.max, {
+    this.min = 1,
+  });
   final String key;
   final double centre, cy, pitch, height;
+  final int min, max;
 }
 
 /// A fixed word, placed by its ink centre and sized by [glyph].
@@ -138,8 +150,8 @@ abstract final class _Faces {
     height: _Layout.oneH,
     border: _Layout.oneBorder,
     regs: <_Reg>[
-      _Reg('municipality', 43.9, 55.2, _Layout.onePitch, 100),
-      _Reg('serial', 252.0, 55.2, _Layout.onePitch, 100),
+      _Reg('municipality', 43.9, 55.2, _Layout.onePitch, 100, 2),
+      _Reg('serial', 252.0, 55.2, _Layout.onePitch, 100, 7),
     ],
     dashes: <PlateBox>[PlateBox(84.3, 57.5, 21.1, 9.7)],
     texts: <_Text>[oneLibya],
@@ -158,9 +170,9 @@ abstract final class _Faces {
       PlatePart(PlateSection.plain),
     ]),
     regs: <_Reg>[
-      _Reg('country', 56.9, 55.2, _Layout.onePitch, 100),
-      _Reg('municipality', 140.6, 55.2, _Layout.onePitch, 100),
-      _Reg('serial', 294.2, 55.2, _Layout.onePitch, 100),
+      _Reg('country', 56.9, 55.2, _Layout.onePitch, 100, 3, min: 2),
+      _Reg('municipality', 140.6, 55.2, _Layout.onePitch, 100, 2),
+      _Reg('serial', 294.2, 55.2, _Layout.onePitch, 100, 4),
     ],
     dashes: <PlateBox>[PlateBox(180.2, 57.9, 20.7, 9.5)],
     texts: <_Text>[_Text.libya(438.2, 55.9, 102.3, 79.3)],
@@ -172,8 +184,8 @@ abstract final class _Faces {
     height: _Layout.oneH,
     border: _Layout.oneBorder,
     regs: <_Reg>[
-      _Reg('serial', 69.5, 53.7, _Layout.onePitch, 100),
-      _Reg('country', 205.4, 53.7, _Layout.onePitch, 100),
+      _Reg('serial', 69.5, 53.7, _Layout.onePitch, 100, 2),
+      _Reg('country', 205.4, 53.7, _Layout.onePitch, 100, 3, min: 2),
     ],
     dashes: <PlateBox>[PlateBox(126.6, 56.3, 21.1, 9.5)],
     texts: <_Text>[_Text.caption(387.4, 53.7, 218.6, 50)],
@@ -185,8 +197,8 @@ abstract final class _Faces {
     height: _Layout.oneH,
     border: _Layout.oneBorder,
     regs: <_Reg>[
-      _Reg('municipality', 87.8, 51.7, _Layout.oneYellowPitch, 96),
-      _Reg('serial', 264.3, 51.7, _Layout.oneYellowPitch, 96),
+      _Reg('municipality', 87.8, 51.7, _Layout.oneYellowPitch, 96, 2),
+      _Reg('serial', 264.3, 51.7, _Layout.oneYellowPitch, 96, 6),
     ],
     dashes: <PlateBox>[PlateBox(134.0, 54.3, 12.2, 8.4)],
     texts: <_Text>[_Text.libya(437.0, 54.9, 106.3, 82.4)],
@@ -199,8 +211,8 @@ abstract final class _Faces {
     height: _Layout.twoH,
     border: _Layout.twoBorder,
     regs: <_Reg>[
-      _Reg('municipality', 67.8, 41.6, _Layout.twoPitch, 70),
-      _Reg('serial', 135.0, 108.85, _Layout.twoPitch, 70),
+      _Reg('municipality', 67.8, 41.6, _Layout.twoPitch, 70, 2),
+      _Reg('serial', 135.0, 108.85, _Layout.twoPitch, 70, 7),
     ],
     dashes: <PlateBox>[PlateBox(99.2, 43.8, 16.5, 7.9)],
     texts: <_Text>[twoLibya],
@@ -225,9 +237,9 @@ abstract final class _Faces {
       PlatePart(PlateSection.plain),
     ]),
     regs: <_Reg>[
-      _Reg('country', 47.3, 38.65, _Layout.twoPitch, 66),
-      _Reg('municipality', 117.4, 40.75, _Layout.twoPitch, 70),
-      _Reg('serial', 135.0, 107.05, _Layout.twoPitch, 70),
+      _Reg('country', 47.3, 38.65, _Layout.twoPitch, 66, 3, min: 2),
+      _Reg('municipality', 117.4, 40.75, _Layout.twoPitch, 70, 2),
+      _Reg('serial', 135.0, 107.05, _Layout.twoPitch, 70, 4),
     ],
     texts: <_Text>[_Text.libya(196.2, 41.0, 96.9, 75.1)],
   );
@@ -238,8 +250,8 @@ abstract final class _Faces {
     height: _Layout.twoH,
     border: _Layout.twoBorder,
     regs: <_Reg>[
-      _Reg('serial', 81.6, 104.0, _Layout.twoPitch, 70),
-      _Reg('country', 189.5, 104.0, _Layout.twoPitch, 70),
+      _Reg('serial', 81.6, 104.0, _Layout.twoPitch, 70, 2),
+      _Reg('country', 189.5, 104.0, _Layout.twoPitch, 70, 3, min: 2),
     ],
     dashes: <PlateBox>[PlateBox(126.9, 106.2, 16.6, 8.1)],
     texts: <_Text>[_Text.caption(134.2, 41.2, 176.5, 40)],
@@ -251,8 +263,8 @@ abstract final class _Faces {
     height: _Layout.twoH,
     border: _Layout.twoBorder,
     regs: <_Reg>[
-      _Reg('municipality', 47.5, 39.7, _Layout.twoYellowPitch, 70),
-      _Reg('serial', 145.0, 108.7, _Layout.twoYellowPitch, 70),
+      _Reg('municipality', 47.5, 39.7, _Layout.twoYellowPitch, 70, 2),
+      _Reg('serial', 145.0, 108.7, _Layout.twoYellowPitch, 70, 6),
     ],
     dashes: <PlateBox>[PlateBox(93.2, 44.0, 10.6, 7.1)],
     texts: <_Text>[_Text.libya(192.05, 37.8, 86.1, 66.7)],
@@ -272,7 +284,7 @@ abstract final class _Faces {
 ///   before the municipality code; serial 1–6.
 ///
 /// Pair private and foreign with `LibyaThemes.white`, diplomatic with
-/// `.red`, lettered with `.yellow`. Specs are built once per digit count.
+/// `.red`, lettered with `.yellow`. Each field is one slot, sized for its longest run.
 ///
 /// The foreign-country code table in the article has no code for Israel, so
 /// there is nothing to refuse. Not implemented: the 1960s white-on-black, the
@@ -280,64 +292,19 @@ abstract final class _Faces {
 abstract final class LibyaPlates {
   static final Map<String, PlateSpec> _cache = <String, PlateSpec>{};
 
-  static PlateSpec private({
-    bool twoRow = false,
-    int municipalityDigits = 1,
-    int serialDigits = 6,
-  }) {
-    _check('municipality', municipalityDigits, 1, 2);
-    _check('serial', serialDigits, 1, 7);
-    return _build(twoRow ? _Faces.privateTwo : _Faces.privateOne, <String, int>{
-      'municipality': municipalityDigits,
-      'serial': serialDigits,
-    });
-  }
+  static PlateSpec private({bool twoRow = false}) =>
+      _build(twoRow ? _Faces.privateTwo : _Faces.privateOne);
 
-  static PlateSpec foreign({
-    bool twoRow = false,
-    int countryDigits = 2,
-    int municipalityDigits = 1,
-    int serialDigits = 4,
-  }) {
-    _check('country', countryDigits, 2, 3);
-    _check('municipality', municipalityDigits, 1, 2);
-    _check('serial', serialDigits, 1, 4);
-    return _build(twoRow ? _Faces.foreignTwo : _Faces.foreignOne, <String, int>{
-      'country': countryDigits,
-      'municipality': municipalityDigits,
-      'serial': serialDigits,
-    });
-  }
+  static PlateSpec foreign({bool twoRow = false}) =>
+      _build(twoRow ? _Faces.foreignTwo : _Faces.foreignOne);
 
-  static PlateSpec diplomatic({
-    bool twoRow = false,
-    int serialDigits = 2,
-    int countryDigits = 2,
-  }) {
-    _check('serial', serialDigits, 1, 2);
-    _check('country', countryDigits, 2, 3);
-    return _build(
-      twoRow ? _Faces.diplomaticTwo : _Faces.diplomaticOne,
-      <String, int>{'serial': serialDigits, 'country': countryDigits},
-    );
-  }
+  static PlateSpec diplomatic({bool twoRow = false}) =>
+      _build(twoRow ? _Faces.diplomaticTwo : _Faces.diplomaticOne);
 
-  static PlateSpec lettered(
-    LibyaClass cls, {
-    bool twoRow = false,
-    int municipalityDigits = 1,
-    int serialDigits = 6,
-  }) {
-    _check('municipality', municipalityDigits, 1, 2);
-    _check('serial', serialDigits, 1, 6);
-    return _build(
-      twoRow ? _Faces.letteredTwo : _Faces.letteredOne,
-      <String, int>{'municipality': municipalityDigits, 'serial': serialDigits},
-      cls: cls,
-    );
-  }
+  static PlateSpec lettered(LibyaClass cls, {bool twoRow = false}) =>
+      _build(twoRow ? _Faces.letteredTwo : _Faces.letteredOne, cls: cls);
 
-  /// Every design at the reference's digit counts, one and two rows.
+  /// Every design, one and two rows.
   static List<PlateSpec> get all => <PlateSpec>[
     for (final twoRow in const <bool>[false, true]) ...<PlateSpec>[
       private(twoRow: twoRow),
@@ -347,51 +314,29 @@ abstract final class LibyaPlates {
     ],
   ];
 
-  static void _check(String what, int n, int min, int max) {
-    if (n < min || n > max) {
-      throw ArgumentError('A Libyan $what is $min–$max digits (got $n).');
-    }
+  static PlateSpec _build(_Face face, {LibyaClass? cls}) {
+    final id = <String>['ly', face.id, ?cls?.id].join('.');
+    return _cache[id] ??= _spec(id, face, cls);
   }
 
-  static PlateSpec _build(
-    _Face face,
-    Map<String, int> counts, {
-    LibyaClass? cls,
-  }) {
-    final id = <String>[
-      'ly',
-      face.id,
-      ?cls?.id,
-      for (final r in face.regs) '${r.key}${counts[r.key]}',
-    ].join('.');
-    return _cache[id] ??= _spec(id, face, counts, cls);
-  }
-
-  static PlateSpec _spec(
-    String id,
-    _Face face,
-    Map<String, int> counts,
-    LibyaClass? cls,
-  ) {
+  static PlateSpec _spec(String id, _Face face, LibyaClass? cls) {
     final slots = <PlateSlot>[];
     final groups = <PlateTextGroup>[];
     for (final r in face.regs) {
-      final n = counts[r.key]!;
-      final start = slots.length;
-      slots.addAll(
-        plateRegister(
+      groups.add(PlateTextGroup(<int>[slots.length], key: r.key));
+      slots.add(
+        PlateSlot(
           alphabet: LibyaAlphabets.digits,
-          count: n,
-          left: r.centre - n * r.pitch / 2,
-          top: r.cy - r.height / 2,
-          width: r.pitch,
-          height: r.height,
+          box: PlateBox(
+            r.centre - r.max * r.pitch / 2,
+            r.cy - r.height / 2,
+            r.max * r.pitch,
+            r.height,
+          ),
+          length: r.max,
+          minLength: r.min,
+          spacing: max(0, r.pitch - 0.6 * 0.72 * r.height),
         ),
-      );
-      groups.add(
-        PlateTextGroup(<int>[
-          for (var i = start; i < slots.length; i++) i,
-        ], key: r.key),
       );
     }
     final letter = face.letter;

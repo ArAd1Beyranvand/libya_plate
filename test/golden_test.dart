@@ -32,26 +32,26 @@ void main() {
         'private_$row',
         LibyaPlates.private(twoRow: two),
         LibyaThemes.white,
-        '8616192',
+        '8 616192',
       ),
       (
         'foreign_$row',
         LibyaPlates.foreign(twoRow: two),
         LibyaThemes.white,
-        '3933123',
+        '39 3 3123',
       ),
       (
         'diplomatic_$row',
         LibyaPlates.diplomatic(twoRow: two),
         LibyaThemes.red,
-        '1113',
+        '11 13',
       ),
       for (final c in LibyaClass.values)
         (
           '${c.id}_$row',
           LibyaPlates.lettered(c, twoRow: two),
           LibyaThemes.yellow,
-          '8123456',
+          '8 123456',
         ),
     ],
   ];
@@ -64,7 +64,7 @@ void main() {
     testWidgets(name, (tester) async {
       final controller = PlateController.fromValues(
         spec,
-        values.split('').toList(),
+        values.split(' '),
       );
       await tester.pumpWidget(
         MaterialApp(

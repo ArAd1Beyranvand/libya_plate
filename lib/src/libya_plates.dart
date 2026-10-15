@@ -5,6 +5,7 @@ import 'package:plate_core/plate_core.dart';
 import 'libya_alphabets.dart';
 import 'libya_colors.dart';
 import 'libya_country.dart';
+import 'libya_regions.dart';
 import 'libya_usage.dart';
 
 /// Where the ink sits on the 2013 Libyan plates, in millimetres.
@@ -356,6 +357,7 @@ abstract final class LibyaPlates {
         if (letter != null && cls != null) _label(letter, cls.letter),
       ],
       textGroups: groups,
+      resolveRegion: LibyaRegions.captionOf,
     );
   }
 

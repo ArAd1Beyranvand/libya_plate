@@ -13,3 +13,4 @@ export 'src/libya_plates.dart';
 export 'src/libya_themes.dart';
 export 'src/libya_usage.dart';
 export 'src/libya_validators.dart';
+export 'src/libya_regions.dart';

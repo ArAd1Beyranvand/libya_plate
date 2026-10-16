@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-/// A yellow lettered class: the Arabic letter printed before the
-/// municipality code, which is the only thing that tells the five apart.
+/// A yellow lettered class, told apart only by the Arabic letter printed
+/// before the municipality code.
 @immutable
 class LibyaClass {
   const LibyaClass._(this.id, this.name, this.letter);
@@ -9,10 +9,8 @@ class LibyaClass {
   /// Stable identifier, used in spec ids.
   final String id;
 
-  /// English name, as the article heads its section.
   final String name;
 
-  /// The letter on the plate.
   final String letter;
 
   static const LibyaClass agricultural = LibyaClass._(

@@ -10,7 +10,7 @@ export 'src/libya_alphabets.dart';
 export 'src/libya_colors.dart';
 export 'src/libya_country.dart';
 export 'src/libya_plates.dart';
+export 'src/libya_regions.dart';
 export 'src/libya_themes.dart';
 export 'src/libya_usage.dart';
 export 'src/libya_validators.dart';
-export 'src/libya_regions.dart';

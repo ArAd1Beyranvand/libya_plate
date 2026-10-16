@@ -3,10 +3,9 @@ import 'package:plate_core/plate_core.dart';
 
 import 'libya_colors.dart';
 
-/// Black ink on one field per class. The frame's width differs between the
-/// one- and two-row plates, so it lives on each spec
-/// (`borderWidthRatioOverride`); the corner is estimated by eye from the
-/// artwork at about 9 mm on either plate, 0.07 of the height.
+/// Black ink on one field per class. Frame width differs between one- and
+/// two-row plates, so it lives on each spec (`borderWidthRatioOverride`). The
+/// corner radius is estimated by eye.
 abstract final class LibyaThemes {
   /// Private and foreign-owned plates.
   static final PlateTheme white = _ink(LibyaColors.white);

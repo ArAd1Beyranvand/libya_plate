@@ -1,9 +1,7 @@
 import 'package:plate_core/plate_core.dart';
 
-/// Locates a Libyan plate from its municipality code.
-///
-/// Source: the 'Municipality Codes' table of
-/// https://en.wikipedia.org/wiki/Vehicle_registration_plates_of_Libya
+/// Locates a Libyan plate from its municipality code (Wikipedia's
+/// "Municipality Codes" table).
 abstract final class LibyaRegions {
   static const Map<String, String> _municipalities = <String, String>{
     '1': 'Sabha',

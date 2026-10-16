@@ -1,11 +1,10 @@
 import 'package:plate_core/plate_core.dart';
 
-/// Judges any `LibyaPlates` value. Reports, never bars a keystroke.
+/// Advisory validator for any `LibyaPlates` value.
 ///
-/// Checks what the article states: a municipality code from its table (1–67,
-/// with gaps), a serial without a leading zero, and a foreign or diplomatic
-/// country code from the article's table (10–190, with gaps). Groups a spec
-/// does not carry are skipped.
+/// Checks the municipality code against the published table, a serial without
+/// a leading zero, and the foreign or diplomatic country code against its
+/// table. Groups a spec does not carry are skipped.
 class LibyaPlateValidator extends GatedPlateValidator {
   const LibyaPlateValidator();
 
@@ -23,7 +22,6 @@ class LibyaPlateValidator extends GatedPlateValidator {
     for (var i = 1; i <= 67; i++) i,
   }.difference(const <int>{23, 29, 31, 34, 39});
 
-  /// The foreign countries table's codes.
   static const Set<int> countries = <int>{
     10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, //
     28, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,

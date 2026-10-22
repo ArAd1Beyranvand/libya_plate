@@ -11,11 +11,9 @@ class LibyaPlateValidator extends GatedPlateValidator {
   @override
   String get gateGroup => 'serial';
 
-  static const String reasonMunicipality =
-      'Not a municipality code in the published table.';
+  static const String reasonMunicipality = 'Not a municipality code in the published table.';
   static const String reasonSerial = 'The serial does not start with 0.';
-  static const String reasonCountry =
-      'Not a country code in the published table.';
+  static const String reasonCountry = 'Not a country code in the published table.';
 
   /// The municipality table's codes. 23, 29, 31, 34 and 39 are absent.
   static final Set<int> municipalities = <int>{

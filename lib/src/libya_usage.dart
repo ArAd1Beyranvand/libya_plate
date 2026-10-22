@@ -13,22 +13,10 @@ class LibyaClass {
 
   final String letter;
 
-  static const LibyaClass agricultural = LibyaClass._(
-    'agricultural',
-    'Agricultural',
-    'ز',
-  );
-  static const LibyaClass commercial = LibyaClass._(
-    'commercial',
-    'Commercial',
-    'ن',
-  );
+  static const LibyaClass agricultural = LibyaClass._('agricultural', 'Agricultural', 'ز');
+  static const LibyaClass commercial = LibyaClass._('commercial', 'Commercial', 'ن');
   static const LibyaClass taxi = LibyaClass._('taxi', 'Taxi', 'ر');
-  static const LibyaClass semiTruck = LibyaClass._(
-    'semiTruck',
-    'Semi-truck',
-    'ج',
-  );
+  static const LibyaClass semiTruck = LibyaClass._('semiTruck', 'Semi-truck', 'ج');
   static const LibyaClass trailer = LibyaClass._('trailer', 'Trailer', 'م');
 
   static const List<LibyaClass> values = <LibyaClass>[

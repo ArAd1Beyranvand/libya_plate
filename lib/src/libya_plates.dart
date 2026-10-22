@@ -41,15 +41,7 @@ abstract final class _Layout {
 /// A field of [min]..[max] digits centred on [centre], in a box sized for the
 /// longest run.
 class _Reg {
-  const _Reg(
-    this.key,
-    this.centre,
-    this.cy,
-    this.pitch,
-    this.height,
-    this.max, {
-    this.min = 1,
-  });
+  const _Reg(this.key, this.centre, this.cy, this.pitch, this.height, this.max, {this.min = 1});
   final String key;
   final double centre, cy, pitch, height;
   final int min, max;
@@ -132,10 +124,7 @@ abstract final class _Faces {
     height: _Layout.oneH,
     border: _Layout.oneBorder,
     background: PlateSection.columns(<PlatePart>[
-      PlatePart(
-        PlateSection.fill(PlateFill.color(LibyaColors.foreignBlue)),
-        end: 102.4,
-      ),
+      PlatePart(PlateSection.fill(PlateFill.color(LibyaColors.foreignBlue)), end: 102.4),
       PlatePart(PlateSection.plain),
     ]),
     regs: <_Reg>[
@@ -195,10 +184,7 @@ abstract final class _Faces {
     background: PlateSection.rows(<PlatePart>[
       PlatePart(
         PlateSection.columns(<PlatePart>[
-          PlatePart(
-            PlateSection.fill(PlateFill.color(LibyaColors.foreignBlue)),
-            end: 85.9,
-          ),
+          PlatePart(PlateSection.fill(PlateFill.color(LibyaColors.foreignBlue)), end: 85.9),
           PlatePart(PlateSection.plain),
         ]),
         end: 69.5,

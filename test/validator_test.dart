@@ -4,9 +4,7 @@ import 'package:plate_core/plate_core.dart';
 
 void main() {
   PlateValidation judge(PlateSpec spec, String value) =>
-      const LibyaPlateValidator().validate(
-        PlateEntry(spec: spec, values: value.split(' ')),
-      );
+      const LibyaPlateValidator().validate(PlateEntry(spec: spec, values: value.split(' ')));
 
   test('accepts the article examples', () {
     expect(judge(LibyaPlates.private(), '8 616192').isValid, isTrue);
@@ -31,10 +29,7 @@ void main() {
   test('each field is one slot with its own length range', () {
     final private = LibyaPlates.private();
     expect(private.slotCount, 2);
-    expect(private.slots.map((s) => (s.minLength, s.length)), <(int, int)>[
-      (1, 2),
-      (1, 7),
-    ]);
+    expect(private.slots.map((s) => (s.minLength, s.length)), <(int, int)>[(1, 2), (1, 7)]);
     final foreign = LibyaPlates.foreign(twoRow: true);
     expect(foreign.slotCount, 3);
     expect(foreign.slots.first.minLength, 2);

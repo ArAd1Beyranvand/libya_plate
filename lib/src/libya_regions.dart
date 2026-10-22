@@ -80,6 +80,5 @@ abstract final class LibyaRegions {
   }
 
   /// A [PlateLabelResolver] for [PlateSpec.resolveRegion].
-  static String? captionOf(String Function(String key) group) =>
-      lookup(group('municipality'));
+  static String? captionOf(String Function(String key) group) => lookup(group('municipality'));
 }

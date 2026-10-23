@@ -1,5 +1,5 @@
 name: libya_plate
-description: "Libya's licence plates for the plate_core library — the 2013 series in one and two rows: private, foreign-owned, diplomatic and the five lettered yellow classes, with their themes and an advisory validator."
+description: "Libya's licence plates for plate_core: the 2013 series in one and two rows: private, foreign-owned, diplomatic and the five lettered yellow classes, and more."
 version: 0.1.0
 repository: https://github.com/ArAd1Beyranvand/libya_plate
 resolution: workspace

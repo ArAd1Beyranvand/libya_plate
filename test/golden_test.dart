@@ -28,11 +28,31 @@ void main() {
       ('1', false),
       ('2', true),
     ]) ...<(String, PlateSpec, PlateTheme, String)>[
-      ('private_$row', LibyaPlates.private(twoRow: two), LibyaThemes.white, '8 616192'),
-      ('foreign_$row', LibyaPlates.foreign(twoRow: two), LibyaThemes.white, '39 3 3123'),
-      ('diplomatic_$row', LibyaPlates.diplomatic(twoRow: two), LibyaThemes.red, '11 13'),
+      (
+        'private_$row',
+        LibyaPlates.private(twoRow: two),
+        LibyaThemes.white,
+        '8 616192',
+      ),
+      (
+        'foreign_$row',
+        LibyaPlates.foreign(twoRow: two),
+        LibyaThemes.white,
+        '39 3 3123',
+      ),
+      (
+        'diplomatic_$row',
+        LibyaPlates.diplomatic(twoRow: two),
+        LibyaThemes.red,
+        '11 13',
+      ),
       for (final c in LibyaClass.values)
-        ('${c.id}_$row', LibyaPlates.lettered(c, twoRow: two), LibyaThemes.yellow, '8 123456'),
+        (
+          '${c.id}_$row',
+          LibyaPlates.lettered(c, twoRow: two),
+          LibyaThemes.yellow,
+          '8 123456',
+        ),
     ],
   ];
 
@@ -51,14 +71,21 @@ void main() {
               child: SizedBox(
                 width: 780,
                 height: 780 * spec.canvasHeight / spec.canvasWidth,
-                child: PlateView(controller: controller, theme: theme, country: LibyaCountry.libya),
+                child: PlateView(
+                  controller: controller,
+                  theme: theme,
+                  country: LibyaCountry.libya,
+                ),
               ),
             ),
           ),
         ),
       );
       await tester.pumpAndSettle();
-      await expectLater(find.byType(PlateView), matchesGoldenFile('goldens/$name.png'));
+      await expectLater(
+        find.byType(PlateView),
+        matchesGoldenFile('goldens/$name.png'),
+      );
       await tester.pumpWidget(const SizedBox.shrink());
       controller.dispose();
     });

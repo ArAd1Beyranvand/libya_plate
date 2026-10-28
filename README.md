@@ -10,7 +10,17 @@ https://platexample.ir/#/discover/libya
 
 # libya_plate
 
-Libya's licence plates for [`plate_core`](https://pub.dev/packages/plate_core) — the 2013 series in one and two rows: the white private plate, the foreign-owned plate with its blue country-code box, the red diplomatic plate and the five lettered yellow classes, with their themes, alphabets and advisory validator.
+Libya's licence plates for the `plate_core` library. The 2013 series in one row (520×110) and two (270×150): private and foreign-owned on white, diplomatic on red, and the five lettered classes on yellow. The 1960s, 1998–2012 Jamahiriya and Italian colonial series are not implemented.
+
+## Install
+
+```yaml
+dependencies:
+  plate_core: ^0.12.0
+  libya_plate: ^0.1.0
+```
+
+## Use
 
 ```dart
 import 'package:plate_core/plate_core.dart';
@@ -21,30 +31,35 @@ PlateCanvas(
   theme: LibyaThemes.white,
   validator: const LibyaPlateValidator(),
   autoValidate: true,
+  onChooseCharacter: noCharacterChooser,
 );
 ```
 
-## Also available
+## Contains
 
-- [`plate_core`](https://pub.dev/packages/plate-core) - Paint license plates.
-- [`plate_alphabet`](https://pub.dev/packages/plate-alphabet) - A library of alphabets for license plates.
-- [`plate_keypad`](https://pub.dev/packages/plate-keypad) - A character picker for license plates.
-- [`plate_number_holder`](https://pub.dev/packages/plate-number-holder) - A frame to hold license plate numbers.
-- [`algeria_plate`](https://pub.dev/packages/algeria-plate) - Algeria's licence plates.
-- [`bolivia_plate`](https://pub.dev/packages/bolivia-plate) - Bolivia's licence plates.
-- [`colombia_plate`](https://pub.dev/packages/colombia-plate) - Colombia's licence plates.
-- [`cuba_plate`](https://pub.dev/packages/cuba-plate) - Cuba's licence plates.
-- [`germany_plate`](https://pub.dev/packages/germany-plate) - Germany's licence plates.
-- [`india_plate`](https://pub.dev/packages/india-plate) - India's licence plates.
-- [`indonesia_plate`](https://pub.dev/packages/indonesia-plate) - Indonesia's licence plates.
-- [`iran_plate`](https://pub.dev/packages/iran-plate) - Iran's licence plates.
-- [`iranshahr_plate`](https://pub.dev/packages/iranshahr-plate) - Iranshahr region's licence plates.
-- [`lebanon_plate`](https://pub.dev/packages/lebanon-plate) - Lebanon's licence plates.
-- [`malaysia_plate`](https://pub.dev/packages/malaysia-plate) - Malaysia's licence plates.
-- [`mali_plate`](https://pub.dev/packages/mali-plate) - Mali's licence plates.
-- [`niger_plate`](https://pub.dev/packages/niger-plate) - Niger's licence plates.
-- [`palestine_plate`](https://pub.dev/packages/palestine-plate) - Palestine's licence plates.
-- [`sudan_plate`](https://pub.dev/packages/sudan-plate) - Sudan's licence plates.
-- [`tunisia_plate`](https://pub.dev/packages/tunisia-plate) - Tunisia's licence plates.
-- [`venezuela_plate`](https://pub.dev/packages/venezuela-plate) - Venezuela's licence plates.
-- [`yemen_plate`](https://pub.dev/packages/yemen-plate) - Yemen's licence plates.
+- `LibyaCountry` — country panel: `libya`.
+- `LibyaPlates` — 4 plate specs (factories): `private()`, `foreign()`, `diplomatic()`, `lettered()`.
+- `LibyaThemes` — 3 themes: `white`, `yellow`, `red`.
+- `LibyaPlateValidator` — advisory validator; flags the frame, never blocks a keystroke.
+- `LibyaRegions` — code table.
+
+## Plates
+
+The 2013 series, one row (520×110) or two (270×150). Each field is one slot
+sized for its longest run.
+
+* `private`: municipality 1-2 digits, serial 1-7 (7 only in Tripoli).
+  Theme `LibyaThemes.white`.
+* `foreign`: the owner's country code (2-3 digits) in a blue box, then
+  municipality and a 1-4 digit serial. Theme `white`.
+* `diplomatic`: a 1-2 digit serial and the mission's country code, with no
+  `ليبيا`. Theme `red`.
+* `lettered`: the five yellow classes (`LibyaClass`), class letter before
+  the municipality code; serial 1-6. Theme `yellow`.
+
+Earlier series (1960s, 1998-2012, colonial) are not implemented.
+
+## Part of plate
+
+Painted by [`plate_core`](https://pub.dev/packages/plate_core); alphabets shared through [`plate_alphabet`](https://pub.dev/packages/plate_alphabet); optional character picker in [`plate_keypad`](https://pub.dev/packages/plate_keypad).
+

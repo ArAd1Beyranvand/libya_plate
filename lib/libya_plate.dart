@@ -6,6 +6,9 @@
 /// not implemented.
 library;
 
+// TODO(py): [D5] one module `plates.countries.libya`; assets via importlib.resources.
+// TODO(ts): [D5] one subpath export `./countries/libya`; tree-shakable.
+// TODO(kt): [D5] package `countries.libya` in the countries module.
 export 'src/libya_alphabets.dart';
 export 'src/libya_colors.dart';
 export 'src/libya_country.dart';

@@ -7,7 +7,6 @@ import 'libya_colors.dart';
 abstract final class LibyaCountry {
   static const PlateCountry libya = PlateCountry(
     code: 'ly',
-    captionLines: <String>[],
     panelColor: LibyaColors.white,
     panelTextColor: LibyaColors.ink,
   );

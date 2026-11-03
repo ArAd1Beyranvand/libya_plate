@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:plate_core/plate_core.dart';
 
 import 'libya_alphabets.dart';
@@ -27,14 +25,10 @@ import 'libya_usage.dart';
 /// engine paints one frame, so the frame is the inner stroke's width.
 /// `هيئة سياسية` is set in the theme's face, not Ruqʿah.
 abstract final class _Layout {
-  static const double oneW = 520, oneH = 110;
-  static const double twoW = 270, twoH = 150;
-  static const double oneBorder = 4.0 / oneH;
-  static const double twoBorder = 3.2 / twoH;
+  static const double oneW = 520, oneH = 110, twoW = 270, twoH = 150;
+  static const double oneBorder = 4.0 / oneH, twoBorder = 3.2 / twoH;
 
-  static const double onePitch = 35.2;
-  static const double oneYellowPitch = 31.9;
-  static const double twoPitch = 28.0;
+  static const double onePitch = 35.2, oneYellowPitch = 31.9, twoPitch = 28.0;
   static const double twoYellowPitch = 26.05;
 }
 
@@ -285,21 +279,17 @@ abstract final class LibyaPlates {
 
   static PlateSpec _spec(String id, _Face face, LibyaClass? cls) {
     final slots = <PlateSlot>[];
-    final groups = <PlateTextGroup>[];
     for (final r in face.regs) {
-      groups.add(PlateTextGroup(<int>[slots.length], key: r.key));
       slots.add(
-        PlateSlot(
-          alphabet: LibyaAlphabets.digits,
-          box: PlateBox(
-            r.centre - r.max * r.pitch / 2,
-            r.cy - r.height / 2,
-            r.max * r.pitch,
-            r.height,
-          ),
-          length: r.max,
+        plateRun(
+          LibyaAlphabets.digits,
+          r.max,
+          centre: r.centre,
+          top: r.cy - r.height / 2,
+          pitch: r.pitch,
+          height: r.height,
           minLength: r.min,
-          spacing: max(0, r.pitch - 0.6 * 0.72 * r.height),
+          group: r.key,
         ),
       );
     }
@@ -309,8 +299,6 @@ abstract final class LibyaPlates {
       country: LibyaCountry.libya,
       canvasWidth: face.width,
       canvasHeight: face.height,
-      panel: const PlatePanel(box: PlateBox(0, 0, 0, 0)),
-      noPanel: true,
       background: face.background,
       borderWidthRatioOverride: face.border,
       slots: slots,
@@ -319,7 +307,6 @@ abstract final class LibyaPlates {
         for (final t in face.texts) _label(t, t.text),
         if (letter != null && cls != null) _label(letter, cls.letter),
       ],
-      textGroups: groups,
       resolveRegion: LibyaRegions.captionOf,
     );
   }

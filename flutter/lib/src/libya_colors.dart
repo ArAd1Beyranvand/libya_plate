@@ -15,6 +15,4 @@ abstract final class LibyaColors {
 
   /// The foreign owner's country-code box.
   static const Color foreignBlue = Color(0xFF0279C1);
-
-  static const Color inactive = Color(0xFFB0B0B0);
 }

@@ -21,7 +21,6 @@ abstract final class LibyaThemes {
 PlateTheme _ink(Color field) => PlateTheme.monochrome(
   field: field,
   ink: LibyaColors.ink,
-  inactive: LibyaColors.inactive,
   borderWidthRatio: 0.037,
   plateRadiusRatio: 0.07,
 );

@@ -6,13 +6,24 @@ GO VEGAN 🌱
 
 From the mighty people of Iran to the steadfast people of Libya to view examples:
 
-https://platexample.ir/#/discover/libya
+https://platexample.ir/#/discover/libya:flutter
 
 # libya_plate
 
-Libya's licence plates for the `plate_core` library. The 2013 series in one row (520×110) and two (270×150): private and foreign-owned on white, diplomatic on red, and the five lettered classes on yellow. The 1960s, 1998–2012 Jamahiriya and Italian colonial series are not implemented.
+Libya's licence plates for plate_core: the 2013 series in one and two rows: private, foreign-owned, diplomatic and the five lettered yellow classes, and more.
 
-## Install
+## Languages
+
+| Language | Folder | Example |
+| --- | --- | --- |
+| Flutter / Dart | [`flutter/`](https://github.com/ArAd1Beyranvand/libya_plate/tree/main/flutter) | [platexample](https://platexample.ir/#/discover/libya:flutter) |
+| Kotlin | [`kotlin/`](https://github.com/ArAd1Beyranvand/libya_plate/tree/main/kotlin) | [platexample](https://platexample.ir/#/discover/libya:kotlin) |
+| Python | [`python/`](https://github.com/ArAd1Beyranvand/libya_plate/tree/main/python) | [platexample](https://platexample.ir/#/discover/libya:python) |
+| TypeScript | [`typescript/`](https://github.com/ArAd1Beyranvand/libya_plate/tree/main/typescript) | [platexample](https://platexample.ir/#/discover/libya:typescript) |
+
+## Quick start
+
+### Install
 
 ```yaml
 dependencies:
@@ -20,7 +31,7 @@ dependencies:
   libya_plate: ^0.1.0
 ```
 
-## Use
+### Use
 
 ```dart
 import 'package:plate_core/plate_core.dart';
@@ -35,12 +46,29 @@ PlateCanvas(
 );
 ```
 
-## Contains
+## Specs
 
-- `LibyaCountry` — country panel: `libya`.
-- `LibyaPlates` — 4 plate specs (factories): `private()`, `foreign()`, `diplomatic()`, `lettered()`.
-- `LibyaThemes` — 3 themes: `white`, `yellow`, `red`.
-- `LibyaPlateValidator` — advisory validator; flags the frame, never blocks a keystroke.
+Each spec is one plate layout.
+
+- `LibyaPlates.private`(…)
+- `LibyaPlates.foreign`(…)
+- `LibyaPlates.diplomatic`(…)
+- `LibyaPlates.lettered`(…)
+
+## Themes
+
+- `LibyaThemes.white`
+- `LibyaThemes.yellow`
+- `LibyaThemes.red`
+
+## Change it
+
+`PlateCanvas` takes `spec:` (an entry of `LibyaPlates`) and `theme:` (an entry of `LibyaThemes`). Set `validator:` to `LibyaPlateValidator()` and `autoValidate: true` to show validation hints.
+
+## Also included
+
+- `LibyaCountry` — the country panel.
+- `LibyaPlateValidator` — the plate validator.
 - `LibyaRegions` — code table.
 
 ## Plates
@@ -63,3 +91,6 @@ Earlier series (1960s, 1998-2012, colonial) are not implemented.
 
 Painted by [`plate_core`](https://pub.dev/packages/plate_core); alphabets shared through [`plate_alphabet`](https://pub.dev/packages/plate_alphabet); optional character picker in [`plate_keypad`](https://pub.dev/packages/plate_keypad).
 
+## License
+
+See [LICENSE](https://github.com/ArAd1Beyranvand/libya_plate/blob/main/LICENSE).

@@ -1,4 +1,4 @@
-import { GatedPlateValidator, type PlateEntry, type PlateValidation, invalid, isDigits, isDigitsOfLength, valid } from '../../core/validators/plate_validator';
+import { GatedPlateValidator, type PlateEntry, type PlateValidation, invalid, isDigits, isDigitsOfLength, valid } from 'plate_core/core/validators/plate_validator';
 
 /** Judges a Libyan plate: a municipality code, a serial not starting with 0 and, on foreign plates, a country code. Reports, never bars a keystroke. */
 export class LibyaPlateValidator extends GatedPlateValidator {
